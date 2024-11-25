@@ -30,12 +30,16 @@ public class Main {
         System.out.println("Enter numbers to insert into the tree (comma-separated):");
         String input = scanner.nextLine();
         String[] numbers = input.split(",");
-        for (String number : numbers) {
+        if (numbers.length > 0) {
             try {
-                int value = Integer.parseInt(number.trim());
-                tree.insert(value);
+                int rootValue = Integer.parseInt(numbers[0].trim());
+                tree.insert(rootValue);
+                for (int i = 1; i < numbers.length; i++) {
+                    int value = Integer.parseInt(numbers[i].trim());
+                    tree.insert(value);
+                }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number: " + number);
+                System.out.println("Invalid number in input.");
             }
         }
     }
