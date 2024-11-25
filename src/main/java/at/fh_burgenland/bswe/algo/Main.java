@@ -6,14 +6,8 @@ import java.util.Scanner;
 @Log4j2
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
-
-        System.out.println("Enter numbers to insert into the tree (type 'done' to finish):");
-        while (scanner.hasNextInt()) {
-            int number = scanner.nextInt();
-            tree.insert(number);
-        }
+        getUserInput(tree);
 
         System.out.println("Tree structure:");
         tree.displayTree();
@@ -28,6 +22,21 @@ public class Main {
             System.out.println("The tree is balanced according to AVL rules.");
         } else {
             System.out.println("The tree is not balanced according to AVL rules.");
+        }
+    }
+
+    private static void getUserInput(BinaryTree tree) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter numbers to insert into the tree (comma-separated):");
+        String input = scanner.nextLine();
+        String[] numbers = input.split(",");
+        for (String number : numbers) {
+            try {
+                int value = Integer.parseInt(number.trim());
+                tree.insert(value);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number: " + number);
+            }
         }
     }
 }
