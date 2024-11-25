@@ -40,6 +40,10 @@ public class Main {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid number in input.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Input contains invalid characters.");
+            } catch (Exception e) {
+                System.out.println("An unexpected error occurred: " + e.getMessage());
             }
         }
     }
