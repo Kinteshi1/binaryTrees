@@ -25,6 +25,10 @@ public class Main {
         }
     }
 
+    /**
+     * Get user input and insert numbers into the tree.
+     * @param tree  The binary tree to insert the numbers into.
+     */
     private static void getUserInput(BinaryTree tree) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter numbers to insert into the tree (comma-separated):");

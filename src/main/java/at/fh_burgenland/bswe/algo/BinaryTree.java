@@ -13,6 +13,7 @@ public class BinaryTree {
 
     /**
      * Inserts a value into the binary tree.
+     *
      * @param value the value to insert
      */
     public void insert(int value) {
@@ -21,7 +22,8 @@ public class BinaryTree {
 
     /**
      * Inserts a value into the binary tree recursively.
-     * @param node the current node
+     *
+     * @param node  the current node
      * @param value the value to insert
      * @return the new node
      */
@@ -39,6 +41,7 @@ public class BinaryTree {
 
     /**
      * Checks if the binary tree is balanced according to AVL rules.
+     *
      * @return true if the tree is balanced, false otherwise
      */
     public boolean isBalanced() {
@@ -47,8 +50,9 @@ public class BinaryTree {
 
     /**
      * Checks if the binary tree is balanced according to AVL rules recursively.
+     *
      * @param node the current node
-     * @return  the height of the tree if it is balanced, -1 otherwise
+     * @return the height of the tree if it is balanced, -1 otherwise
      */
     private int isBalancedRec(TreeNode node) {
         if (node == null) {
@@ -73,6 +77,7 @@ public class BinaryTree {
 
     /**
      * Preorder traversal of the binary tree recursively.
+     *
      * @param node the current node
      */
     private void preorderRec(TreeNode node) {
@@ -203,6 +208,23 @@ public class BinaryTree {
             System.out.println();
 
             perpiece /= 2;
+        }
+    }
+
+    class TreeNode {
+        int value;
+        TreeNode left;
+        TreeNode right;
+
+        /**
+         * Constructor for a TreeNode
+         *
+         * @param value the value to store in the node
+         */
+        public TreeNode(int value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
         }
     }
 }
