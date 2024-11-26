@@ -1,15 +1,50 @@
 package at.fh_burgenland.bswe.algo;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import javax.swing.tree.TreeNode;
+import java.util.*;
 
 /**
  * Represents and handles the Binary trees operations.
  */
 public class BinaryTree {
     private TreeNode root;
+
+    /**
+     * Creates a binary tree and inserts numbers from user input.
+     */
+    public void createTree() {
+    Scanner scanner = new Scanner(System.in);
+
+    // Retrieve the numbers from the user
+    System.out.println("Enter numbers to insert into the tree (comma-separated):");
+    System.out.println("[for Example: 8, 4, 9, 7, 2, 13, 11, 46]");
+    String input = scanner.nextLine();
+
+    // Split the input by comma
+    String[] numbers = input.split(",");
+    if (numbers.length > 0) {
+
+        // Create a set to store unique numbers
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        try {
+            // Trim the numbers and insert them into the tree (in case user enters spaces)
+            for (String number : numbers) {
+                int value = Integer.parseInt(number.trim());
+                if (!uniqueNumbers.add(value)) {
+                    System.out.println("Duplicate number found and removed: " + value);
+                    return;
+                }
+                insert(value);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number in input.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Input contains invalid characters.");
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+}
 
     /**
      * Inserts a value into the binary tree.
@@ -28,12 +63,15 @@ public class BinaryTree {
      * @return the new node
      */
     private TreeNode insertRec(TreeNode node, int value) {
+        //if the node is null, create a new node with the value
         if (node == null) {
             return new TreeNode(value);
         }
+        //if the value is less than the node value, insert it to the left
+        //otherwise it can be assumed its more thus insert it to the right
         if (value < node.value) {
             node.left = insertRec(node.left, value);
-        } else if (value > node.value) {
+        } else {
             node.right = insertRec(node.right, value);
         }
         return node;
@@ -196,8 +234,7 @@ public class BinaryTree {
                 System.out.println();
             }
 
-            for (int j = 0; j < line.size(); j++) {
-                String f = line.get(j);
+            for (String f : line) {
                 if (f == null) f = "";
                 int gap1 = (int) Math.ceil(perpiece / 2f - f.length() / 2f);
                 int gap2 = (int) Math.floor(perpiece / 2f - f.length() / 2f);
@@ -211,7 +248,7 @@ public class BinaryTree {
         }
     }
 
-    class TreeNode {
+    static class TreeNode {
         int value;
         TreeNode left;
         TreeNode right;

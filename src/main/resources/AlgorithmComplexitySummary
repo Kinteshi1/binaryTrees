@@ -1,26 +1,26 @@
 ### Algorithm Complexity Summary
 
 #### Best Case
-- **Insertion**: O(log n)
+-Insertion: O(log n)
   - In the best case, the binary tree is balanced, and each insertion operation requires traversing only log(n) levels.
 
-- **Traversal (Preorder and Level Order)**: O(n)
+-Traversal (Preorder and Level Order): O(n)
   - Both traversals visit each node exactly once, resulting in linear time complexity.
 
-- **Balance Check**: O(n)
+-Balance Check: O(n)
   - The balance check needs to visit each node to determine the height, resulting in linear time complexity.
 
 #### Worst Case
-- **Insertion**: O(n)
+- Insertion: O(n)
   - In the worst case, the binary tree is skewed (like a linked list), and each insertion operation requires traversing
     all n levels.
 
-- **Traversal (Preorder and Level Order)**: O(n)
+-Traversal (Preorder and Level Order): O(n)
   - Both traversals still visit each node exactly once, resulting in linear time complexity.
 
-- **Balance Check**: O(n)
+-Balance Check: O(n)
   - The balance check still needs to visit each node to determine the height, resulting in linear time complexity.
 
-  Conclusion:
+-Conclusion:
   In conclusion can be said the overall Complexity of the AVL Tree is O(log n) for insertion and O(n) for traversal and
-  balance check.
+  balance check. Additionally these factors do not change considering the best or worst case scenarios.
